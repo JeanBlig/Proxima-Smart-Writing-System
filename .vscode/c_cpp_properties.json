@@ -1,0 +1,23 @@
+{
+  "version": 4,
+  "configurations": [
+    {
+      "name": "x64-MSVC",
+      "intelliSenseMode": "windows-msvc-x64",
+      "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64/cl.exe",
+      "cppStandard": "c++17",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "C:/vcpkg/installed/x64-windows/include",
+        "C:/Users/Change me/llama.cpp/include",
+        "C:/Users/Change me/llama.cpp/ggml/include",
+        "C:/Users/Change me/llama.cpp/common"
+      ],
+      "defines": [
+        "_WIN32",
+        "_CRT_SECURE_NO_WARNINGS",
+        "NOMINMAX"
+      ]
+    }
+  ]
+}

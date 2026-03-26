@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Proxima",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}\\Dependencies\\Proxima.exe",
+      "cwd": "${workspaceFolder}\\Dependencies",
+      "environment": [
+        {
+          "name": "PATH",
+          "value": "${workspaceFolder}\\Dependencies;${env:PATH}"
+        }
+      ],
+      "console": "integratedTerminal",
+      "preLaunchTask": "Build Program (with OCR + LLM)"
+    }
+  ]
+}
