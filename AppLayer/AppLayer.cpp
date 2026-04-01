@@ -14,7 +14,6 @@ namespace {
 
         const std::string ocrResult = PerformOCR(AppLayer::bmpPath);
         const std::string llmResponse = RunLlamaPrompt(AppLayer::model, ocrResult);
-
         {
             std::lock_guard<std::mutex> lock(AppLayer::StateMutex);
             AppLayer::OCR_Result = ocrResult;
