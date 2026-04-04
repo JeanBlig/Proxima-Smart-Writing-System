@@ -1,4 +1,5 @@
 #include "Window.h"
+#include <algorithm>
 #include <stdexcept>
 #include <iostream>
 #include <vector>
@@ -265,8 +266,8 @@ namespace WindowAPI {
                 const int deltaX = pt.x - resizeStartCursor.x;
                 const int deltaY = pt.y - resizeStartCursor.y;
 
-                const int newWidth = max(160, (originalTextBoxRect.right - originalTextBoxRect.left) + deltaX);
-                const int newHeight = max(60, (originalTextBoxRect.bottom - originalTextBoxRect.top) + deltaY);
+                const int newWidth = std::max<int>(160, static_cast<int>((originalTextBoxRect.right - originalTextBoxRect.left) + deltaX));
+                const int newHeight = std::max<int>(60, static_cast<int>((originalTextBoxRect.bottom - originalTextBoxRect.top) + deltaY));
 
                 MoveWindow(
                     hwndEdit,
