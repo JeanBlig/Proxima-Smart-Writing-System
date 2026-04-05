@@ -162,7 +162,7 @@ namespace WindowAPI {
         std::string responseText;
         {
             std::lock_guard<std::mutex> lock(AppLayer::StateMutex);
-            responseText = AppLayer::LLM_Response;
+            responseText = AppLayer::LLM_Response; // After LLM Response text is filled here when text box is created
         }
 
         hTextBox = CreateWindowExA(
@@ -181,7 +181,7 @@ namespace WindowAPI {
             return;
         }
 
-        SetWindowTextA(hTextBox, responseText.c_str());
+        SetWindowTextA(hTextBox, responseText.c_str()); // writing of the text
         SetFocus(hTextBox);
 
         g_OldTextBoxProc = (WNDPROC)SetWindowLongPtr(
