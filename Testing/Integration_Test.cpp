@@ -3,7 +3,6 @@
 #include <filesystem>
 #include <string>
 #include <windows.h>
-
 #include "../AppLayer/AppLayer.h"
 #include "../Core/Tesseract-OCR/Test_Tesseract.h"
 #include "../WindowAPI/Window.h"

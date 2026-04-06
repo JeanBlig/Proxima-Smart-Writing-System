@@ -73,10 +73,19 @@ static std::string TokenToText(const llama_vocab * vocab, llama_token tok)
     out.resize((size_t)n);
     return out;
 }
+
+static std::string BuildPromptInstructions(const std::string& sourceText)
+{
+    return
+        "Give educational responses to the text.\n"
+        "Give a two to three complete sentence reponse.\n"
+        "Do not add a header, title, label, explanation, or quotation marks.\n\n"
+        + sourceText;
+}
 // -------------------- Main exported function --------------------
 
-std::string RunLlamaPrompt(const std::string& model_path,
-                           const std::string& prompt)
+std::string RunLlamaPrompt(const std::string& model_path, const std::string& prompt)
+
 {
     llama_log_set(SuppressLlamaLogs, nullptr);
     llama_backend_init();
@@ -101,11 +110,12 @@ std::string RunLlamaPrompt(const std::string& model_path,
     }
 
     const llama_vocab * vocab = llama_model_get_vocab(model);
+    const std::string fullPrompt = BuildPromptInstructions(prompt);
 
     // Tokenize prompt (parse_special=false for normal text prompts)
     std::vector<llama_token> prompt_tokens;
     try {
-        prompt_tokens = TokenizePrompt(vocab, prompt, /*add_special=*/true, /*parse_special=*/false);
+        prompt_tokens = TokenizePrompt(vocab, fullPrompt, /*add_special=*/true, /*parse_special=*/false);
     } catch (...) {
         llama_free(ctx);
         llama_model_free(model);
@@ -128,7 +138,7 @@ std::string RunLlamaPrompt(const std::string& model_path,
     llama_sampler * sampler = llama_sampler_init_greedy();
 
     std::string out;
-    const int max_new_tokens = 64;
+    const int max_new_tokens = 102;
 
     for (int i = 0; i < max_new_tokens; ++i) {
         llama_token tok = llama_sampler_sample(sampler, ctx, -1);

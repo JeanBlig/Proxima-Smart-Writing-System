@@ -7,7 +7,6 @@
 #include <string>
 #include <thread>
 
-
 namespace { // Makes it local to this file
     void RunPromptWorkflow()
     {

@@ -68,13 +68,16 @@
                 "/FeDependencies/Tests.exe",
                 "/link",
                 "/INCREMENTAL:NO",
+                "Llama.obj",
                 "user32.lib",
                 "gdi32.lib",
                 "advapi32.lib",
                 "shell32.lib",
                 "C:/vcpkg/installed/x64-windows/lib/tesseract55.lib",
                 "C:/vcpkg/installed/x64-windows/lib/leptonica-1.85.0.lib",
-                "C:/vcpkg/installed/x64-windows/lib/cppunit.lib"
+                "C:/vcpkg/installed/x64-windows/lib/cppunit.lib",
+                "C:/Users/Change me/llama.cpp/build/src/Release/llama.lib",
+                "C:/Users/Change me/llama.cpp/build/ggml/src/Release/ggml-cpu.lib"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

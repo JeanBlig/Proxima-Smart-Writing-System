@@ -1,8 +1,10 @@
+﻿#pragma once
+
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
 #include <string>
 
-std::string PerformOCR(const std::string& imagePath) {
+inline std::string PerformOCR(const std::string& imagePath) {
     tesseract::TessBaseAPI api;
 
     // 1) Initialize Tesseract
